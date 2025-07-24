@@ -29,20 +29,42 @@
 		A439514F2E2F0EB1002CE7AA /* RecipeHubUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeHubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A43951702E2FD81A002CE7AA /* Exceptions for "RecipeHub" folder in "RecipeHub" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/RecipeHubTests/RecipeHubTests.swift,
+				Tests/RecipeHubUITests/RecipeHubUITests.swift,
+				Tests/RecipeHubUITests/RecipeHubUITestsLaunchTests.swift,
+			);
+			target = A43951362E2F0EB0002CE7AA /* RecipeHub */;
+		};
+		A43951712E2FD81A002CE7AA /* Exceptions for "RecipeHub" folder in "RecipeHubTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/RecipeHubTests/RecipeHubTests.swift,
+			);
+			target = A43951442E2F0EB1002CE7AA /* RecipeHubTests */;
+		};
+		A43951722E2FD81A002CE7AA /* Exceptions for "RecipeHub" folder in "RecipeHubUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/RecipeHubUITests/RecipeHubUITests.swift,
+				Tests/RecipeHubUITests/RecipeHubUITestsLaunchTests.swift,
+			);
+			target = A439514E2E2F0EB1002CE7AA /* RecipeHubUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A43951392E2F0EB0002CE7AA /* RecipeHub */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A43951702E2FD81A002CE7AA /* Exceptions for "RecipeHub" folder in "RecipeHub" target */,
+				A43951712E2FD81A002CE7AA /* Exceptions for "RecipeHub" folder in "RecipeHubTests" target */,
+				A43951722E2FD81A002CE7AA /* Exceptions for "RecipeHub" folder in "RecipeHubUITests" target */,
+			);
 			path = RecipeHub;
-			sourceTree = "<group>";
-		};
-		A43951482E2F0EB1002CE7AA /* RecipeHubTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = RecipeHubTests;
-			sourceTree = "<group>";
-		};
-		A43951522E2F0EB1002CE7AA /* RecipeHubUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = RecipeHubUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,8 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				A43951392E2F0EB0002CE7AA /* RecipeHub */,
-				A43951482E2F0EB1002CE7AA /* RecipeHubTests */,
-				A43951522E2F0EB1002CE7AA /* RecipeHubUITests */,
 				A43951382E2F0EB0002CE7AA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +122,7 @@
 				A43951332E2F0EB0002CE7AA /* Sources */,
 				A43951342E2F0EB0002CE7AA /* Frameworks */,
 				A43951352E2F0EB0002CE7AA /* Resources */,
+				A43951742E2FE30C002CE7AA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -130,9 +151,6 @@
 			dependencies = (
 				A43951472E2F0EB1002CE7AA /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				A43951482E2F0EB1002CE7AA /* RecipeHubTests */,
-			);
 			name = RecipeHubTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +170,6 @@
 			);
 			dependencies = (
 				A43951512E2F0EB1002CE7AA /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A43951522E2F0EB1002CE7AA /* RecipeHubUITests */,
 			);
 			name = RecipeHubUITests;
 			packageProductDependencies = (
@@ -195,6 +210,9 @@
 			);
 			mainGroup = A439512E2E2F0EB0002CE7AA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A43951732E2FE16C002CE7AA /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A43951382E2F0EB0002CE7AA /* Products */;
 			projectDirPath = "";
@@ -230,6 +248,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A43951742E2FE30C002CE7AA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A43951332E2F0EB0002CE7AA /* Sources */ = {
@@ -304,6 +344,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -324,6 +367,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -365,7 +409,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -379,6 +426,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -392,9 +440,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecipeHub/Info.plist;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=*]" = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
@@ -429,7 +479,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecipeHub/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -583,6 +635,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A43951732E2FE16C002CE7AA /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.59.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = A439512F2E2F0EB0002CE7AA /* Project object */;
 }
