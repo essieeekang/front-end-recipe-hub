@@ -17,8 +17,8 @@ class LoginViewModel: ObservableObject {
                 username: username,
                 password: password
             )
-        ).call { _ in
-            // Login successful, navigate to the Home screen
+        ).call { response in
+            print("Welcome! Your new username is: ", response.body)
         }
     }
 }

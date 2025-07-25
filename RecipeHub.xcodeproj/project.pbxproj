@@ -33,6 +33,7 @@
 		A43951702E2FD81A002CE7AA /* Exceptions for "RecipeHub" folder in "RecipeHub" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Info.plist,
 				Tests/RecipeHubTests/RecipeHubTests.swift,
 				Tests/RecipeHubUITests/RecipeHubUITests.swift,
 				Tests/RecipeHubUITests/RecipeHubUITestsLaunchTests.swift,

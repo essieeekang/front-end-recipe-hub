@@ -43,7 +43,15 @@ struct CreateAccountScreen: View {
             Spacer()
 
             Button(
-                action: viewModel.createaccount,
+                action: {
+                    viewModel.createaccount {
+                        DispatchQueue.main.async {
+                            viewModel.username = ""
+                            viewModel.email = ""
+                            viewModel.password = ""
+                        }
+                    }
+                },
                 label: {
                     Text("Create Account")
                         .font(.system(size: 24, weight: .bold, design: .default))

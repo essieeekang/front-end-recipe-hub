@@ -12,7 +12,7 @@ class CreateAccountViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
 
-    func createaccount() {
+    func createaccount(completion handler: @escaping () -> Void) {
         CreateAccountAction(
             parameters: CreateAccountRequest(
                 username: username,
@@ -20,7 +20,8 @@ class CreateAccountViewModel: ObservableObject {
                 password: password
             )
         ).call { response in
-            print("username", response.username)
+            print("Welcome! Your new username is: ", response.username)
+            handler()
         }
     }
 }

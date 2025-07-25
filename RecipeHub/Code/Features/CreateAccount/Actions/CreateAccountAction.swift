@@ -13,7 +13,7 @@ struct CreateAccountAction {
         let scheme: String = "http"
         let host: String = "127.0.0.1"
         let port: Int = 8080
-        let path = "/api/users"
+        let path = "/api/auth/register"
 
         var components = URLComponents()
         components.scheme = scheme
@@ -57,7 +57,7 @@ struct CreateAccountAction {
                 let response = try JSONDecoder().decode(CreateAccountResponse.self, from: data)
                 completion(response)
             } catch {
-                print("Decoding error: \(error)")
+                print("You have an overlapping username or email. Please try again.")
             }
         }
 

@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var path = NavigationPath()
+
     var body: some View {
-        CreateAccountScreen()
+        NavigationStack(path: $path) {
+            WelcomeScreen(
+                onLogin: { path.append("login") },
+                onCreateAccount: { path.append("createAccount") }
+            )
+            .navigationDestination(for: String.self) { destination in
+                switch destination {
+                case "login":
+                    LoginScreen()
+                case "createAccount":
+                    CreateAccountScreen()
+                default:
+                    EmptyView()
+                }
+            }
+        }
     }
 }
 

@@ -10,13 +10,15 @@ import Foundation
 struct LoginAction {
     var parameters: LoginRequest
     func call(completion: @escaping (LoginResponse) -> Void) {
-        let scheme: String = "https"
-        let host: String = "base_url"
-        let path = "/login"
+        let scheme: String = "http"
+        let host: String = "127.0.0.1"
+        let port: Int = 8080
+        let path = "/api/auth/login"
 
         var components = URLComponents()
         components.scheme = scheme
         components.host = host
+        components.port = port
         components.path = path
 
         guard let url = components.url else {
@@ -24,7 +26,7 @@ struct LoginAction {
         }
 
         var request = URLRequest(url: url)
-        request.httpMethod = "post"
+        request.httpMethod = "POST"
 
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -32,26 +34,38 @@ struct LoginAction {
         do {
             request.httpBody = try JSONEncoder().encode(parameters)
         } catch {
-            // Error: Unable to encode request parameters
+            print("Encoding error")
+            return
         }
 
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
-            if let data = data {
-                let response = try? JSONDecoder().decode(LoginResponse.self, from: data)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Network error: \(error)")
+                return
+            }
 
-                if let response = response {
-                    completion(response)
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Status code: \(httpResponse.statusCode)")
+                if httpResponse.statusCode != 200 {
+                    print("Login failed")
                 } else {
-                    // Error: Unable to decode response JSON
-                }
-            } else {
-                // Error: API request failed
-
-                if let error = error {
-                    print("Error: \(error)")
+                    print("Login successful")
                 }
             }
+
+            guard let data = data else {
+                print("No data returned")
+                return
+            }
+
+            do {
+                let response = try JSONDecoder().decode(LoginResponse.self, from: data)
+                completion(response)
+            } catch {
+                print("")
+            }
         }
+
         task.resume()
     }
 }
